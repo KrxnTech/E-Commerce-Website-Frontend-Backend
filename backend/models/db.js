@@ -1,17 +1,20 @@
+const mysql = require('mysql2')
+require('dotenv').config({ path: '../config/dbConfig.env' })
 
-const mysql = require("mysql2"); // REQUIRES THE MYSQL2 PACKAGE
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+})
 
-// CREATE A CONNECTION POOL
-const pool = mysql
-  .createPool({
-    host: process.env.DB_HOST, // HOST
-    user: process.env.DB_USER, // USER
-    password: process.env.DB_PASS, // PASSWORD
-    database: process.env.DB_NAME, // DATABASE
-    waitForConnections: true, // WAIT FOR CONNECTIONS
-    connectionLimit: 10, // CONNECTION LIMIT
-    queueLimit: 0, // QUEUE LIMIT
-  })
-  .promise(); // PROMISE
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.log("Database connection failed:", err)
+  } else {
+    console.log("MySQL Connected Successfully!")
+    connection.release()
+  }
+})
 
-module.exports = pool; // EXPORT THE POOL 
+module.exports = pool.promise()
