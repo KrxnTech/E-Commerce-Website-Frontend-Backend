@@ -3,7 +3,7 @@ async function loadProducts() {
         // CALLING API 
         const response = await fetch('http://localhost:5000/api/products');
         // SEND REPONSE TO JSON 
-        const products = await response.json();
+        const products = await response.json(); 
 
         // TAKE FROM HTML 
         const container = document.getElementById('product_container');
@@ -37,3 +37,4 @@ async function loadProducts() {
 
 
 loadProducts();
+
