@@ -1,4 +1,4 @@
-# Day Log
+# Day Log ✨
 
 ## Ecommerce Project Progress
 
