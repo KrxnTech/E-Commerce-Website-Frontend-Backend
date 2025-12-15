@@ -1,5 +1,3 @@
-# Ecommerce Website
-
 ## Project Folder Structure
 
 ```
@@ -23,5 +21,4 @@ project root
 └── readme.md
 ```
 
----
 
